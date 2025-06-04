@@ -3,10 +3,16 @@ public class GuessResult {
     private int strikes;
     private int balls;
 
-    public GuessResult(boolean solved, int strikes, int balls) {
+    public GuessResult(boolean solved) {
         this.solved = solved;
-        this.strikes = strikes;
-        this.balls = balls;
+
+        if (solved) {
+            this.strikes = 3;
+            this.balls = 0;
+        } else {
+            this.strikes = 0;
+            this.balls = 0;
+        }
     }
 
     public boolean isSolved() {
@@ -19,5 +25,13 @@ public class GuessResult {
 
     public int getBalls() {
         return balls;
+    }
+
+    public void setStrikes(int strikes) {
+        this.strikes = strikes;
+    }
+
+    public void setBalls(int balls) {
+        this.balls = balls;
     }
 }
