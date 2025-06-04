@@ -1,5 +1,9 @@
 public class Game {
     public void guess(String guessNumber) {
+        assertIllegalArgumnet(guessNumber);
+    }
+
+    private void assertIllegalArgumnet(String guessNumber) {
         if (guessNumber == null) {
             throw new IllegalArgumentException("Input cannot be null");
         }
@@ -14,10 +18,14 @@ public class Game {
             }
         }
 
-        if (guessNumber.charAt(0) == guessNumber.charAt(1) ||
-            guessNumber.charAt(0) == guessNumber.charAt(2) ||
-            guessNumber.charAt(1) == guessNumber.charAt(2)) {
+        if (isDuplicatedNumber(guessNumber)) {
             throw new IllegalArgumentException("Input must not contain duplicate digits");
         }
+    }
+
+    private boolean isDuplicatedNumber(String guessNumber) {
+        return guessNumber.charAt(0) == guessNumber.charAt(1) ||
+                guessNumber.charAt(0) == guessNumber.charAt(2) ||
+                guessNumber.charAt(1) == guessNumber.charAt(2);
     }
 }
