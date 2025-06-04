@@ -3,11 +3,28 @@ public class Game {
 
     public GuessResult guess(String guessNumber) {
         assertIllegalArgumnet(guessNumber);
+
         if (guessNumber.equals(question)) {
             return new GuessResult(true, 3, 0);
-        } else {
-            return new GuessResult(false, 0, 0);
         }
+
+        return getResult(guessNumber);
+    }
+
+    private GuessResult getResult(String guessNumber) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < guessNumber.length(); i++) {
+            char guessChar = guessNumber.charAt(i);
+            if (question.charAt(i) == guessChar) {
+                strikes++;
+            } else if (question.indexOf(guessChar) != -1) {
+                balls++;
+            }
+        }
+
+        return new GuessResult(false, strikes, balls);
     }
 
     private void assertIllegalArgumnet(String guessNumber) {

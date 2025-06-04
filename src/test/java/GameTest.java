@@ -47,6 +47,18 @@ class GameTest {
         assertMatchedNumber(game.guess("456"), false, 0, 0);
     }
 
+    @Test
+    void returnSolvedResultIf2S0B() {
+        generateQuestion("123");
+        assertMatchedNumber(game.guess("124"), false, 2, 0);
+    }
+
+    @Test
+    void returnSolvedResultIf1S2B() {
+        generateQuestion("123");
+        assertMatchedNumber(game.guess("132"), false, 1, 2);
+    }
+
     private void generateQuestion(String questionNumber) {
         game.question = questionNumber;
     }
