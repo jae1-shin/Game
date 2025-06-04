@@ -13,5 +13,11 @@ public class Game {
                 throw new IllegalArgumentException("Input must contain only digits");
             }
         }
+
+        if (guessNumber.charAt(0) == guessNumber.charAt(1) ||
+            guessNumber.charAt(0) == guessNumber.charAt(2) ||
+            guessNumber.charAt(1) == guessNumber.charAt(2)) {
+            throw new IllegalArgumentException("Input must not contain duplicate digits");
+        }
     }
 }
