@@ -22,4 +22,11 @@ class GameTest {
             game.guess(null);
         });
     }
+
+    @Test
+    void throwExceptionWhenInputLengthIsUnmatched() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.guess("12"); // Assuming the game expects a 4-digit number
+        });
+    }
 }
